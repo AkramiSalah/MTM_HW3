@@ -33,12 +33,21 @@ namespace mtm {
          * 12. apply - returns a new list with elements that were modified by an operation
          */
 
-        SortedList() : head(nullptr), tail(nullptr){};
+        SortedList() : head(nullptr), tail(nullptr), size(0){};
+
+        ~SortedList(){
+            Node* currNode = head;
+            while(currNode != nullptr){
+                Node* temp = currNode;
+                currNode = currNode->next;
+                delete temp;
+            }
+        }
 
         SortedList(const SortedList& otherList){
-            // TODO : make this shit (its a copy constructor).. but first wait till Iterator is done.
-            // possible exceptions:
-            // idk tbh.. maybe all of em will be handeled by the Iterator class..
+            for(const T& value : other){
+                insert(val);
+            }
         }
 
         ConstIterator begin(){
@@ -50,8 +59,8 @@ namespace mtm {
             return ConstIterator(nullptr);
         }
 
-        void insert( const T& element ){
-            Node nodeToInsert = new Node(element);
+        void insert( const T& value ){
+            Node nodeToInsert = new Node(value);
             for(Node& currNode : this){
                 if( !(nodeToInsert.data > currNode.data) ){
                     // according to logic (mathematical logic) the negation of the > operator is <=.
@@ -88,11 +97,6 @@ namespace mtm {
             return this->size;
         }
         
-
-
-
-
-
     private:
         struct Node{
             T data;
@@ -100,14 +104,11 @@ namespace mtm {
             Node* next;
             
             explicit Node(const T& inData) : data(inData), prev(nullptr), next(nullptr){}
-
         };
 
         Node* head;
         Node* tail;
         int size;
-
-
 
         void insert(Node& prevNode, Node& nodeToInsert, Node& nextNode){
             if(prevNode != nullptr){
@@ -132,9 +133,7 @@ namespace mtm {
                 tail = nodeToInsert;
             }
         }
-
-
-
+    };
 
     template <class T>
     class SortedList<T>::ConstIterator {
@@ -189,5 +188,5 @@ namespace mtm {
 
         ~ConstIterator() = default; // this is probably bad
     };
-};
 
+};
