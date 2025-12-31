@@ -101,35 +101,40 @@ namespace mtm {
             
             explicit Node(const T& inData) : data(inData), prev(nullptr), next(nullptr){}
 
-            void insert(Node& prevNode, Node& nodeToInsert, Node& nextNode){
-                if(prevNode != nullptr){
-                    prevNode->next = nodeToInsert;
-                }
-                
-                if(nextNode != nullptr){
-                    nextNode->prev = nodeToInsert;
-                }
-
-                nodeToInsert->next = nextNode;
-                nodeToInsert->prev = prevNode;
-                
-
-                this->size += 1;
-                
-                if(prevNode == nullptr){
-                    head = nodeToInsert;
-                }
-
-                if(nextNode == nullptr){
-                    tail = nodeToInsert;
-                }
-            }
         };
 
         Node* head;
         Node* tail;
         int size;
-    };
+
+
+
+        void insert(Node& prevNode, Node& nodeToInsert, Node& nextNode){
+            if(prevNode != nullptr){
+                prevNode->next = nodeToInsert;
+            }
+            
+            if(nextNode != nullptr){
+                nextNode->prev = nodeToInsert;
+            }
+
+            nodeToInsert->next = nextNode;
+            nodeToInsert->prev = prevNode;
+            
+
+            this->size += 1;
+            
+            if(prevNode == nullptr){
+                head = nodeToInsert;
+            }
+
+            if(nextNode == nullptr){
+                tail = nodeToInsert;
+            }
+        }
+
+
+
 
     template <class T>
     class SortedList<T>::ConstIterator {
@@ -184,5 +189,5 @@ namespace mtm {
 
         ~ConstIterator() = default; // this is probably bad
     };
-}
+};
 
