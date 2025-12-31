@@ -123,19 +123,7 @@ namespace mtm {
                 if(nextNode == nullptr){
                     tail = nodeToInsert;
                 }
-
             }
-
-            static bool operator>(const Node& leftNode, const Node& rightNode){
-                return leftNode->data > rightNode->data;
-            }
-
-            static bool operator==(const Node& leftNode, const Node& rightNode){
-                // according to logic (as in mathematical logic) the the negating of operator> is <=
-                // also according to logic for a,b such that a >= b && b >= a, it must be that theyre equal.
-                return !(leftNode > rightNode) && !(rightNode > leftNode);
-            }
-
         };
 
         Node* head;
