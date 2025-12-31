@@ -8,6 +8,7 @@ namespace mtm {
     template <typename T>
     class SortedList {
     public:
+        class ConstIterator;
         /**
          *
          * the class should support the following public interface:
@@ -32,13 +33,17 @@ namespace mtm {
          * 12. apply - returns a new list with elements that were modified by an operation
          */
 
-         SortedList() : head(nullptr), tail(nullptr){};
+        SortedList() : head(nullptr), tail(nullptr){};
 
         SortedList(const SortedList& otherList){
             // TODO : make this shit (its a copy constructor).. but first wait till Iterator is done.
             // possible exceptions:
             // idk tbh.. maybe all of em will be handeled by the Iterator class..
-         }
+        }
+
+        ConstIterator begin(){
+            return ConstIterator()
+        }
 
 
 
@@ -77,14 +82,7 @@ namespace mtm {
      *4321
      */
     public:
-        ConstIterator( const ConstIterator& iterator) : current(iterator->current){}
-        
-        const ConstIterator& operator=(const ConstIterator& iterator){
-            current = iterator->current;
-        }
-
-        ~ConstIterator() = default; // this is probably bad
-
+        friend class SortedList<T>;
         const T& operator*() const{
             if(current == nullptr){
                 throw std::out_of_range("you have reached the lists end !!")
@@ -101,9 +99,22 @@ namespace mtm {
             return *this;
         }
 
+        bool operator!=(const ConstIterator& other) const{
+            return this->current != other->current
+        }
+
     private:
-        Node* current;
+        const Node* current;
+        
         ConstIterator( const Node* node) : current(node){}
+        
+        ConstIterator( const ConstIterator& iterator) : current(iterator->current){}
+        
+        const ConstIterator& operator=(const ConstIterator& iterator){
+            current = iterator->current;
+        }
+
+        ~ConstIterator() = default; // this is probably bad
     };
 }
 
