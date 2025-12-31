@@ -42,9 +42,15 @@ namespace mtm {
         }
 
         ConstIterator begin(){
-            return ConstIterator()
+            return ConstIterator(head);
         }
 
+
+        ConstIterator end(){
+            return ConstIterator(nullptr);
+        }
+
+        
 
 
 
@@ -106,7 +112,7 @@ namespace mtm {
     private:
         const Node* current;
         
-        ConstIterator( const Node* node) : current(node){}
+        ConstIterator( const Node& node) : current(node){}
         
         ConstIterator( const ConstIterator& iterator) : current(iterator->current){}
         
