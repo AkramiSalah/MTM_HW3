@@ -50,6 +50,32 @@ namespace mtm {
             return ConstIterator(nullptr);
         }
 
+        void insert( const T& element ){
+            Node newNode = Node(element);
+            for(Node& currNode : this){
+                if(  newNode == currNode ||  newNode > currNode ){
+                    newNode->prev = currNode;
+                    newNode->next = currNode->next;
+
+                    currNode->next = newNode;
+                    (newNode->next)->prev = currNode;
+
+                    this->size += 1;
+                    
+                    if(newNode->prev == nullptr){
+                        head = newNode;
+                    }
+
+                    if(newNode->next == nullptr){
+                        tail = newNode;
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        
         
 
 
@@ -61,7 +87,19 @@ namespace mtm {
             T data;
             Node* prev;
             Node* next;
-            Node(const T& inData) : data(inData), prev(nullptr), next(nullptr){}
+            
+            explicit Node(const T& inData) : data(inData), prev(nullptr), next(nullptr){}
+
+            bool operator>(const Node& leftNode, const Node& rightNode){
+                return leftNode->data > rightNode->data;
+            }
+
+            bool operator==(const Node& leftNode, const Node& rightNode){
+                // according to logic (as in mathematical logic) the the negating of operator> is <=
+                // also according to logic for a,b such that a >= b && b >= a, it must be that theyre equal.
+                return !(leftNode > rightNode) && !(rightNode > leftNode);
+            }
+
         };
 
         Node* head;
