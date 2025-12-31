@@ -71,13 +71,13 @@ namespace mtm {
         }
 
         void remove(const ConstIterator& iterator){
-            if(iterator->current == nullptr){
+            if(iterator.current == nullptr){
                 throw std::out_of_range("can't remove an element that is not in the List");
             }
 
 
-            Node* prevNode = iterator.current.prev;
-            Node* nextNode = iterator.current.next;
+            Node* prevNode = iterator.current->prev;
+            Node* nextNode = iterator.current->next;
 
             delete iterator.current;
             this->size -= 1;
@@ -87,9 +87,11 @@ namespace mtm {
                 tail = nullptr;
             }else if(prevNode == nullptr){
                 head = nextNode;
+                head->prev = nullptr;
             }
             else if(nextNode == nullptr){
                 tail = prevNode;
+                tail->next = nullptr;
             }else{
                 prevNode->next = nextNode;
                 nextNode->prev = prevNode;
