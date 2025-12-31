@@ -45,26 +45,26 @@ namespace mtm {
         }
 
         SortedList(const SortedList& otherList){
-            for(const T& value : other){
-                insert(val);
+            for(const T& value : otherList){
+                insert(value);
             }
         }
 
-        ConstIterator begin(){
+        ConstIterator begin() {
             return ConstIterator(head);
         }
 
 
-        ConstIterator end(){
+        ConstIterator end() const{
             return ConstIterator(nullptr);
         }
 
         void insert( const T& value ){
-            Node nodeToInsert = new Node(value);
-            for(Node& currNode : this){
-                if( !(nodeToInsert.data > currNode.data) ){
+            Node* nodeToInsert = new Node(value);
+            for(ConstIterator iterator = begin(); iterator != end(); ++iterator){
+                if( !(nodeToInsert->data > *iterator) ){
                     // according to logic (mathematical logic) the negation of the > operator is <=.
-                    insert(currNode->prev, nodeToInsert, currNode);
+                    insert(iterator.current->prev, nodeToInsert, iterator.current->next);
                     break;
                 }
             }
@@ -154,10 +154,10 @@ namespace mtm {
      *4321
      */
     public:
-        friend class SortedList<T>;
+        friend SortedList<T>;
         const T& operator*() const{
             if(current == nullptr){
-                throw std::out_of_range("you have reached the lists end !!")
+                throw std::out_of_range("you have reached the lists end !!");
             }
 
             return current->data;
@@ -165,20 +165,20 @@ namespace mtm {
 
         const ConstIterator& operator++(){
             if(current == nullptr){
-                throw std::out_of_range("you have reached the lists end !!")
+                throw std::out_of_range("you have reached the lists end !!");
             }
             current = current->next;
             return *this;
         }
 
         bool operator!=(const ConstIterator& other) const{
-            return this->current != other->current
+            return this->current != other.current;
         }
 
     private:
         const Node* current;
         
-        ConstIterator( const Node& node) : current(node){}
+        ConstIterator( const Node* node) : current(node){}
         
         ConstIterator( const ConstIterator& iterator) : current(iterator->current){}
         
