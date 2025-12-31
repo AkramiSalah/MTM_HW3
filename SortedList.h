@@ -31,6 +31,20 @@ namespace mtm {
          * 11. filter - returns a new list with elements that satisfy a given condition
          * 12. apply - returns a new list with elements that were modified by an operation
          */
+
+         SortedList() : head(nullptr), tail(nullptr){};
+
+        SortedList(const SortedList& otherList){
+            // TODO : make this shit (its a copy constructor).. but first wait till Iterator is done.
+            // possible exceptions:
+            // idk tbh.. maybe all of em will be handeled by the Iterator class..
+         }
+
+
+
+
+
+
     private:
         struct Node{
             T data;
@@ -41,7 +55,7 @@ namespace mtm {
 
         Node* head;
         Node* tail;
-        
+        int size;
     };
 
     template <class T>
@@ -60,8 +74,36 @@ namespace mtm {
      * 5. operator* - returns the element the iterator points to
      * 6. operator++ - advances the iterator to the next element
      * 7. operator!= - returns true if the iterator points to a different element
-     *
+     *4321
      */
+    public:
+        ConstIterator( const ConstIterator& iterator) : current(iterator->current){}
+        
+        const ConstIterator& operator=(const ConstIterator& iterator){
+            current = iterator->current;
+        }
+
+        ~ConstIterator() = default; // this is probably bad
+
+        const T& operator*() const{
+            if(current == nullptr){
+                throw std::out_of_range("you have reached the lists end !!")
+            }
+
+            return current->data;
+        }
+
+        const ConstIterator& operator++(){
+            if(current == nullptr){
+                throw std::out_of_range("you have reached the lists end !!")
+            }
+            current = current->next;
+            return *this;
+        }
+
+    private:
+        Node* current;
+        ConstIterator( const Node* node) : current(node){}
     };
 }
 
