@@ -51,31 +51,42 @@ namespace mtm {
         }
 
         void insert( const T& element ){
-            Node newNode = Node(element);
+            Node nodeToInsert = Node(element);
             for(Node& currNode : this){
-                if(  newNode == currNode ||  newNode > currNode ){
-                    newNode->prev = currNode;
-                    newNode->next = currNode->next;
-
-                    currNode->next = newNode;
-                    (newNode->next)->prev = currNode;
-
-                    this->size += 1;
-                    
-                    if(newNode->prev == nullptr){
-                        head = newNode;
-                    }
-
-                    if(newNode->next == nullptr){
-                        tail = newNode;
-                    }
-
+                if( !(nodeToInsert.data > currNode.data) ){
+                    // according to logic (mathematical logic) the negation of the > operator is <=.
+                    insert(currNode->prev, nodeToInsert, currNode);
                     break;
                 }
             }
         }
 
-        
+        void remove(const ConstIterator& iterator){
+            if(iterator->current == nullptr){
+                throw std::out_of_range("can't remove an element that is not in the List");
+            }
+
+
+            Node* prevNode = iterator->current->prev;
+            Node* nextNode = iterator->current->next;
+
+            delete iterator->current;
+            this->size -= 1;
+
+            if(prevNode == nullptr && nextNode == nullptr){
+                head = nullptr;
+                tail = nullptr;
+            }else if(prevNode == nullptr){
+                head = nextNode;
+            }
+            else if(nextNode == nullptr){
+                tail = prevNode;
+            }
+        }
+
+        int length(){
+            return this->size;
+        }
         
 
 
@@ -90,11 +101,36 @@ namespace mtm {
             
             explicit Node(const T& inData) : data(inData), prev(nullptr), next(nullptr){}
 
-            bool operator>(const Node& leftNode, const Node& rightNode){
+            void insert(Node& prevNode, Node& nodeToInsert, Node& nextNode){
+                if(prevNode != nullptr){
+                    prevNode->next = nodeToInsert;
+                }
+                
+                if(nextNode != nullptr){
+                    nextNode->prev = nodeToInsert;
+                }
+
+                nodeToInsert->next = nextNode;
+                nodeToInsert->prev = prevNode;
+                
+
+                this->size += 1;
+                
+                if(prevNode == nullptr){
+                    head = nodeToInsert;
+                }
+
+                if(nextNode == nullptr){
+                    tail = nodeToInsert;
+                }
+
+            }
+
+            static bool operator>(const Node& leftNode, const Node& rightNode){
                 return leftNode->data > rightNode->data;
             }
 
-            bool operator==(const Node& leftNode, const Node& rightNode){
+            static bool operator==(const Node& leftNode, const Node& rightNode){
                 // according to logic (as in mathematical logic) the the negating of operator> is <=
                 // also according to logic for a,b such that a >= b && b >= a, it must be that theyre equal.
                 return !(leftNode > rightNode) && !(rightNode > leftNode);
