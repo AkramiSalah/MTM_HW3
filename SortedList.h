@@ -76,10 +76,10 @@ namespace mtm {
             }
 
 
-            Node* prevNode = iterator->current->prev;
-            Node* nextNode = iterator->current->next;
+            Node* prevNode = iterator.current.prev;
+            Node* nextNode = iterator.current.next;
 
-            delete iterator->current;
+            delete iterator.current;
             this->size -= 1;
 
             if(prevNode == nullptr && nextNode == nullptr){
@@ -90,6 +90,9 @@ namespace mtm {
             }
             else if(nextNode == nullptr){
                 tail = prevNode;
+            }else{
+                prevNode->next = nextNode;
+                nextNode->prev = prevNode;
             }
         }
 
