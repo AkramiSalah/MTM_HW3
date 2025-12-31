@@ -110,7 +110,7 @@ namespace mtm {
         Node* tail;
         int size;
 
-        void insert(Node& prevNode, Node& nodeToInsert, Node& nextNode){
+        void insert(Node* prevNode, Node* nodeToInsert, Node* nextNode){
             if(prevNode != nullptr){
                 prevNode->next = nodeToInsert;
             }
