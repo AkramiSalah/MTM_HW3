@@ -51,7 +51,7 @@ namespace mtm {
         }
 
         void insert( const T& element ){
-            Node nodeToInsert = Node(element);
+            Node nodeToInsert = new Node(element);
             for(Node& currNode : this){
                 if( !(nodeToInsert.data > currNode.data) ){
                     // according to logic (mathematical logic) the negation of the > operator is <=.
