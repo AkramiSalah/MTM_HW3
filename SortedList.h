@@ -42,7 +42,28 @@ namespace mtm {
             }
         }
 
+        SortedList& operator=(const SortedList& otherList){
+            if(this == &otherList){
+                return *this;
+            }
 
+            SortedList tempList = SortedList(otherList);
+            
+            Node* tempNode = this->head;
+
+            this->head = tempList.head;
+            tempList.head = tempNode;
+
+            tempNode = this->tail;
+            this->tail = tempList.tail;
+            tempList.tail = tempNode;
+
+            int tempSize = this->size;
+            this->size = tempList.size;
+            tempList.size = tempSize;
+
+            return *this;      
+        }
 
         ~SortedList(){
             Node* currNode = head;
