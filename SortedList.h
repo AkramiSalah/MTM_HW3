@@ -34,6 +34,14 @@ namespace mtm {
          */
 
         SortedList() : head(nullptr), tail(nullptr), size(0){};
+         
+        SortedList(const SortedList& otherList){
+            for(const T& value : otherList){
+                insert(value);
+            }
+        }
+
+
 
         ~SortedList(){
             Node* currNode = head;
@@ -44,11 +52,6 @@ namespace mtm {
             }
         }
 
-        SortedList(const SortedList& otherList){
-            for(const T& value : otherList){
-                insert(value);
-            }
-        }
 
         ConstIterator begin() {
             return ConstIterator(head);
@@ -62,8 +65,10 @@ namespace mtm {
         void insert( const T& value ){
             Node* nodeToInsert = new Node(value);
 
-            if(head == nullptr){
-                insert(head, nodeToInsert, tail)
+            if(head == nullptr && tail == nullptr){
+                // empty list case
+                insert(head, nodeToInsert, tail);
+                return;
             }
 
 
@@ -71,20 +76,18 @@ namespace mtm {
             for(iterator = begin(); iterator != end(); ++iterator){
                 if( !(nodeToInsert->data > *iterator) ){
                     // according to logic (mathematical logic) the negation of the > operator is <=.
-                    insert(iterator.current->prev, nodeToInsert, iterator.current->next);
+                    insert(iterator.current->prev, nodeToInsert, iterator.current);
                     return;
                 }
             }
 
-            // this is only reached when all list members are smaller than the value we wantto insert.
+            // value to insert is larger than any other element of the list case.
             insert(this->tail, nodeToInsert, iterator.current);
-
-            
         }
 
         void remove(const ConstIterator& iterator){
             if(iterator.current == nullptr){
-                throw std::out_of_range("can't remove an element that is not in the List");
+                throw std::out_of_range("can't remove an element that is not in the list !!!");
             }
 
 
@@ -193,14 +196,15 @@ namespace mtm {
         }
 
     private:
-        const Node* current;
+        Node* current;
         
-        ConstIterator( const Node* node) : current(node){}
+        explicit ConstIterator( Node* node ) : current(node){}
         
-        ConstIterator( const ConstIterator& iterator) : current(iterator->current){}
+        explicit ConstIterator( const ConstIterator& iterator) : current(iterator.current){}
         
         const ConstIterator& operator=(const ConstIterator& iterator){
-            current = iterator->current;
+            current = iterator.current;
+            return *this;
         }
 
         ~ConstIterator() = default; // this is probably bad
