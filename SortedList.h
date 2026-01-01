@@ -35,9 +35,10 @@ namespace mtm {
 
         SortedList() : head(nullptr), tail(nullptr), size(0){};
          
-        SortedList(const SortedList& otherList){
+        SortedList(const SortedList& otherList) : head(nullptr), tail(nullptr), size(0){
             for(const T& value : otherList){
-                insert(value);
+                Node* nodeCopy = new Node(value);
+                insert(tail, nodeCopy, nullptr);
             }
         }
 
