@@ -75,7 +75,7 @@ namespace mtm {
         }
 
 
-        ConstIterator begin() {
+        ConstIterator begin() const{
             return ConstIterator(head);
         }
 
@@ -197,6 +197,15 @@ namespace mtm {
      */
     public:
         friend SortedList<T>;
+
+        ConstIterator( const ConstIterator& iterator) : current(iterator.current){}
+        
+        const ConstIterator& operator=(const ConstIterator& iterator){
+            current = iterator.current;
+            return *this;
+        }
+
+        ~ConstIterator() = default; // this is probably bad
         const T& operator*() const{
             if(current == nullptr){
                 throw std::out_of_range("you have reached the lists end !!");
@@ -221,15 +230,6 @@ namespace mtm {
         Node* current;
         
         explicit ConstIterator( Node* node ) : current(node){}
-        
-        explicit ConstIterator( const ConstIterator& iterator) : current(iterator.current){}
-        
-        const ConstIterator& operator=(const ConstIterator& iterator){
-            current = iterator.current;
-            return *this;
-        }
-
-        ~ConstIterator() = default; // this is probably bad
     };
 
 };
