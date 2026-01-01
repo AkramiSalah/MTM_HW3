@@ -61,13 +61,25 @@ namespace mtm {
 
         void insert( const T& value ){
             Node* nodeToInsert = new Node(value);
-            for(ConstIterator iterator = begin(); iterator != end(); ++iterator){
+
+            if(head == nullptr){
+                insert(head, nodeToInsert, tail)
+            }
+
+
+            ConstIterator iterator = begin();
+            for(iterator = begin(); iterator != end(); ++iterator){
                 if( !(nodeToInsert->data > *iterator) ){
                     // according to logic (mathematical logic) the negation of the > operator is <=.
                     insert(iterator.current->prev, nodeToInsert, iterator.current->next);
-                    break;
+                    return;
                 }
             }
+
+            // this is only reached when all list members are smaller than the value we wantto insert.
+            insert(this->tail, nodeToInsert, iterator.current);
+
+            
         }
 
         void remove(const ConstIterator& iterator){
