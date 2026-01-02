@@ -135,7 +135,7 @@ namespace mtm {
             }
         }
 
-        int length(){
+        int length() const{
             return this->size;
         }
         template<class Condition>
@@ -152,7 +152,8 @@ namespace mtm {
         SortedList apply(const Toperator& op) const {
             SortedList result= *this;
             for (const T& elem: result) {
-                elem = op(elem);//don't know if we can assume that T has =operator
+                result.insert(op(elem));
+                result.remove(elem);
             }
             return result;
         }
