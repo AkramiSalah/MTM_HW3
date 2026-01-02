@@ -138,7 +138,24 @@ namespace mtm {
         int length(){
             return this->size;
         }
-        
+        template<class Condition>
+        SortedList filter(const Condition& condition) const {
+            SortedList result;
+            for (const T& elem: *this) {
+                if(condition(elem)) {
+                    result.insert(elem);
+                }
+            }
+            return result;
+        }
+        template<class Toperator>
+        SortedList apply(const Toperator& op) const {
+            SortedList result= *this;
+            for (const T& elem: result) {
+                elem = op(elem);//don't know if we can assume that T has =operator
+            }
+            return result;
+        }
     private:
         struct Node{
             T data;
