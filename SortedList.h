@@ -150,10 +150,9 @@ namespace mtm {
         }
         template<class Toperator>
         SortedList apply(const Toperator& op) const {
-            SortedList result= *this;
-            for (const T& elem: result) {
+            SortedList result;
+            for (const T& elem: *this) {
                 result.insert(op(elem));
-                result.remove(elem);
             }
             return result;
         }
