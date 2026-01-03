@@ -1,3 +1,56 @@
-//
-// Created by User on 02/01/2026.
-//
+#include "TaskManager.h"
+
+TaskManager::TaskManager(): personsNumber(0) {
+    persons = new Person[MAX_PERSONS];
+}
+
+
+int TaskManager::SearchPerson(const string &personName) const {
+    int i=0;
+    while(i < personsNumber&&persons[i].getName()!=personName) {
+        i++;
+    }
+}
+
+void TaskManager::assignTask(const string &personName, const Task &task) {
+    int i=SearchPerson(personName);
+    if (i == MAX_PERSONS) {
+        throw std::runtime_error("Cannot add more people");
+    }
+    if (i == personsNumber) {
+        persons[i]= Person(personName);
+        personsNumber++;
+    }
+    persons[i].assignTask(task);
+}
+
+void TaskManager::completeTask(const string &personName) {
+    int i=SearchPerson(personName);
+    if (i == personsNumber) {
+        return;
+    }
+    persons[i].completeTask();
+}
+
+
+void TaskManager::bumpPriorityByType(TaskType type, int priority) {
+    if (priority<=0) return;
+    for (int i=0; i<personsNumber; i++) {
+        //its very complicated and saves like 2 lines of code but it avoids duplication
+        persons[i].setTasks(persons[i].getTasks().apply([type,priority](const Task& task)
+        {if (type==task.getType()) {return Task(task.getPriority()+priority,task.getType(),task.getDescription());} return Task(task); }));
+    }
+}
+
+void TaskManager::printAllEmployees() const {
+    for (int i=0; i<personsNumber; i++) {
+        std::cout << persons[i] << std::endl;
+    }
+}
+
+void TaskManager::printAllTasks() const {
+    for (int i=0; i<personsNumber; i++) {
+        for ()
+    }
+}
+
