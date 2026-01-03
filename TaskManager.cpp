@@ -10,6 +10,7 @@ int TaskManager::SearchPerson(const string &personName) const {
     while(i < personsNumber&&persons[i].getName()!=personName) {
         i++;
     }
+    return i;
 }
 
 void TaskManager::assignTask(const string &personName, const Task &task) {
