@@ -109,7 +109,7 @@ namespace mtm {
 
         void remove(const ConstIterator& iterator){
             if(iterator.current == nullptr){
-                throw std::out_of_range("can't remove an element that is not in the list !!!");
+                return;
             }
 
 
