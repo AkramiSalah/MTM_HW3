@@ -18,6 +18,7 @@ private:
 
     int SearchPerson(const string &personName) const;
 
+    SortedList<Task> GetAllTasks() const;
     // Note - Additional private fields and methods can be added if needed.
 
 public:
