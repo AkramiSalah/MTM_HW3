@@ -42,7 +42,12 @@ void TaskManager::bumpPriorityByType(TaskType type, int priority) {
     for (int i=0; i<personsNumber; i++) {
         //its very complicated and saves like 2 lines of code but it avoids duplication
         persons[i].setTasks(persons[i].getTasks().apply([type,priority](const Task& task)
-        {if (type==task.getType()) {return Task(task.getPriority()+priority,task.getType(),task.getDescription());} return Task(task); }));
+        {if (type==task.getType()) {
+            Task newTask(task.getPriority()+priority,task.getType(),task.getDescription());
+            newTask.setId(task.getId());
+            return Task(newTask);
+        }
+            return Task(task); }));
     }
 }
 
