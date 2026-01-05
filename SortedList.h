@@ -96,7 +96,7 @@ namespace mtm {
 
             ConstIterator iterator = begin();
             for(iterator = begin(); iterator != end(); ++iterator){
-                if( !(nodeToInsert->data > *iterator) ){
+                if( (nodeToInsert->data > *iterator) ){
                     // according to logic (mathematical logic) the negation of the > operator is <=.
                     insert(iterator.current->prev, nodeToInsert, iterator.current);
                     return;

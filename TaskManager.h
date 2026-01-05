@@ -15,6 +15,7 @@ private:
     static const int MAX_PERSONS = 10;
     int personsNumber;
     Person* persons;
+    int taskNumber;
 
     int SearchPerson(const string &personName) const;
 

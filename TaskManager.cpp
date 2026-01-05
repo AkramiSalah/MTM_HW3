@@ -1,6 +1,6 @@
 #include "TaskManager.h"
 
-TaskManager::TaskManager(): personsNumber(0) {
+TaskManager::TaskManager(): personsNumber(0),taskNumber(0) {
     persons = new Person[MAX_PERSONS];
 }
 
@@ -22,7 +22,10 @@ void TaskManager::assignTask(const string &personName, const Task &task) {
         persons[i]= Person(personName);
         personsNumber++;
     }
-    persons[i].assignTask(task);
+    Task newTask(task);
+    newTask.setId(taskNumber);
+    taskNumber++;
+    persons[i].assignTask(newTask);
 }
 
 void TaskManager::completeTask(const string &personName) {
