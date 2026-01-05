@@ -23,6 +23,7 @@ private:
     // Note - Additional private fields and methods can be added if needed.
 
 public:
+    ~TaskManager();
     /**
      * @brief Default constructor to create a TaskManager object.
      *

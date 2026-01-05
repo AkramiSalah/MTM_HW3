@@ -4,6 +4,10 @@ TaskManager::TaskManager(): personsNumber(0),taskNumber(0) {
     persons = new Person[MAX_PERSONS];
 }
 
+TaskManager::~TaskManager() {
+    delete[] persons;
+}
+
 
 int TaskManager::SearchPerson(const string &personName) const {
     int i=0;
