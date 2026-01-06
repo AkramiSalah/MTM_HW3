@@ -80,11 +80,12 @@ void TaskManager::printAllTasks() const {
 }
 
 void TaskManager::printTasksByType(TaskType type) const {
-    SortedList<Task> allTasks = GetAllTasks();
-    for (const Task& task : allTasks) {
-        if (type==task.getType()) {
-            std::cout << task << std::endl;
-        }
+    SortedList<Task> relaventTasks = GetAllTasks().filter(
+        [type](const Task& task) { return type == task.getType(); }
+    );
+    
+    for (const Task& task : relaventTasks) {
+        std::cout << task << std::endl;
     }
 }
 
