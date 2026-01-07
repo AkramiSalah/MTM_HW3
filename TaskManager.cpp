@@ -43,18 +43,25 @@ void TaskManager::completeTask(const string &personName) {
 
 void TaskManager::bumpPriorityByType(TaskType type, int priority) {
     if (priority <= 0) return;
-    for (int i=0; i < personsNumber; i++) {
-        persons[i].setTasks(persons[i].getTasks().apply(
-            [type,priority](const Task& task){
-                if (type==task.getType()) {
-                    Task newTask(task.getPriority()+priority,task.getType(),task.getDescription());
-                    newTask.setId(task.getId());
-                    return newTask;
-                }
 
-                return task;
-            }
-        ));
+    for (int i = 0; i < personsNumber; i++) {
+        persons[i].setTasks(
+            persons[i].getTasks().apply(
+                [type,priority](const Task& task){
+                    if (type == task.getType()) {
+                        Task newTask(
+                            task.getPriority() + priority,
+                            task.getType(),
+                            task.getDescription()
+                        );
+
+                        newTask.setId(task.getId());
+                        return newTask;
+                    }
+                    return task;
+                }
+            )
+        );
     }
 }
 
