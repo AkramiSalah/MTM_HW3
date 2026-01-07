@@ -49,12 +49,7 @@ void TaskManager::bumpPriorityByType(TaskType type, int priority) {
             persons[i].getTasks().apply(
                 [type,priority](const Task& task){
                     if (type == task.getType()) {
-                        Task newTask(
-                            task.getPriority() + priority,
-                            task.getType(),
-                            task.getDescription()
-                        );
-
+                        Task newTask(task.getPriority() + priority, type, task.getDescription());
                         newTask.setId(task.getId());
                         return newTask;
                     }
