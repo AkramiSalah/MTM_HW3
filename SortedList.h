@@ -96,8 +96,7 @@ namespace mtm {
 
             ConstIterator iterator = begin();
             for(iterator = begin(); iterator != end(); ++iterator){
-                if( (nodeToInsert->data > *iterator) ){
-                    // according to logic (mathematical logic) the negation of the > operator is <=.
+                if( nodeToInsert->data > *iterator ){
                     insert(iterator.current->prev, nodeToInsert, iterator.current);
                     return;
                 }
@@ -138,24 +137,27 @@ namespace mtm {
         int length() const{
             return this->size;
         }
+
         template<class Condition>
         SortedList filter(const Condition& condition) const {
             SortedList result;
-            for (const T& elem: *this) {
+            for (const T& elem : *this) {
                 if(condition(elem)) {
                     result.insert(elem);
                 }
             }
             return result;
         }
+
         template<class Toperator>
         SortedList apply(const Toperator& op) const {
             SortedList result;
-            for (const T& elem: *this) {
+            for (const T& elem : *this) {
                 result.insert(op(elem));
             }
             return result;
         }
+
     private:
         struct Node{
             T data;
@@ -181,7 +183,6 @@ namespace mtm {
             nodeToInsert->next = nextNode;
             nodeToInsert->prev = prevNode;
             
-
             this->size += 1;
             
             if(prevNode == nullptr){
@@ -222,7 +223,8 @@ namespace mtm {
             return *this;
         }
 
-        ~ConstIterator() = default; // this is probably bad
+        ~ConstIterator() = default;
+
         const T& operator*() const{
             if(current == nullptr){
                 throw std::out_of_range("you have reached the lists end !!");

@@ -17,15 +17,6 @@ private:
     Person* persons;
     int taskNumber;
 
-    class ApplyBump {
-    private:
-        TaskType type;
-        int priority;
-    public:
-        ApplyBump(TaskType type, int priority);
-        Task operator()(const Task& task)const;
-    };
-
     int SearchPerson(const string &personName) const;
 
     SortedList<Task> GetAllTasks() const;

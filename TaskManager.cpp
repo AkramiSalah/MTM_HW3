@@ -8,21 +8,10 @@ TaskManager::~TaskManager() {
     delete[] persons;
 }
 
-TaskManager::ApplyBump::ApplyBump(TaskType type, int priority):type(type),priority(priority) {}
-
-    Task TaskManager::ApplyBump::operator()(const Task &task) const {
-    if (type==task.getType()) {
-        Task newTask(task.getPriority()+priority,task.getType(),task.getDescription());
-        newTask.setId(task.getId());
-        return Task(newTask);
-    }
-    return Task(task);
-}
-
 
 int TaskManager::SearchPerson(const string &personName) const {
-    int i=0;
-    while(i < personsNumber&&persons[i].getName()!=personName) {
+    int i = 0;
+    while(i < personsNumber && persons[i].getName() != personName) {
         i++;
     }
     return i;
@@ -34,7 +23,7 @@ void TaskManager::assignTask(const string &personName, const Task &task) {
         throw std::runtime_error("Cannot add more people");
     }
     if (i == personsNumber) {
-        persons[i]= Person(personName);
+        persons[i] = Person(personName);
         personsNumber++;
     }
     Task newTask(task);
@@ -53,10 +42,19 @@ void TaskManager::completeTask(const string &personName) {
 
 
 void TaskManager::bumpPriorityByType(TaskType type, int priority) {
-    if (priority<=0) return;
-    for (int i=0; i<personsNumber; i++) {
-        ApplyBump bump(type, priority);
-        persons[i].setTasks(persons[i].getTasks().apply(bump));
+    if (priority <= 0) return;
+    for (int i=0; i < personsNumber; i++) {
+        persons[i].setTasks(persons[i].getTasks().apply(
+            [type,priority](const Task& task){
+                if (type==task.getType()) {
+                    Task newTask(task.getPriority()+priority,task.getType(),task.getDescription());
+                    newTask.setId(task.getId());
+                    return newTask;
+                }
+
+                return task;
+            }
+        ));
     }
 }
 
@@ -93,5 +91,4 @@ void TaskManager::printTasksByType(TaskType type) const {
         std::cout << task << std::endl;
     }
 }
-
 
