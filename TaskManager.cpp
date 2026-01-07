@@ -8,6 +8,17 @@ TaskManager::~TaskManager() {
     delete[] persons;
 }
 
+TaskManager::ApplyBump::ApplyBump(TaskType type, int priority):type(type),priority(priority) {}
+
+    Task TaskManager::ApplyBump::operator()(const Task &task) const {
+    if (type==task.getType()) {
+        Task newTask(task.getPriority()+priority,task.getType(),task.getDescription());
+        newTask.setId(task.getId());
+        return Task(newTask);
+    }
+    return Task(task);
+}
+
 
 int TaskManager::SearchPerson(const string &personName) const {
     int i=0;
@@ -44,14 +55,8 @@ void TaskManager::completeTask(const string &personName) {
 void TaskManager::bumpPriorityByType(TaskType type, int priority) {
     if (priority<=0) return;
     for (int i=0; i<personsNumber; i++) {
-        //its very complicated and saves like 2 lines of code but it avoids duplication
-        persons[i].setTasks(persons[i].getTasks().apply([type,priority](const Task& task)
-        {if (type==task.getType()) {
-            Task newTask(task.getPriority()+priority,task.getType(),task.getDescription());
-            newTask.setId(task.getId());
-            return Task(newTask);
-        }
-            return Task(task); }));
+        ApplyBump bump(type, priority);
+        persons[i].setTasks(persons[i].getTasks().apply(bump));
     }
 }
 
