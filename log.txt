@@ -1,0 +1,353 @@
+* commit da024fc42551d767b7fbb680d4bd6080f84f5487
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Jan 7 22:19:16 2026 +0200
+| 
+|     make bumpPrio function cleaner one more time
+| 
+|  TaskManager.cpp | 7 +------
+|  1 file changed, 1 insertion(+), 6 deletions(-)
+| 
+* commit d02acce8027f09ac7836d77e3c572437d719a9be
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Jan 7 22:11:09 2026 +0200
+| 
+|     make bumpPrio function even cleaner
+| 
+|  TaskManager.cpp | 29 ++++++++++++++++++-----------
+|  1 file changed, 18 insertions(+), 11 deletions(-)
+| 
+* commit 4ef897f2a257cc9de51dc29c67f8af1ef8589313
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Jan 7 21:44:57 2026 +0200
+| 
+|     revert back to using lambda in bumpPriorityByType according to piazza answer, fix style issues
+| 
+|  SortedList.h    | 14 ++++++++------
+|  TaskManager.cpp | 35 ++++++++++++++++-------------------
+|  TaskManager.h   | 11 +----------
+|  3 files changed, 25 insertions(+), 35 deletions(-)
+| 
+* commit 69c126e51965eb7b35b5a207ed4957e28089a123
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Wed Jan 7 20:10:08 2026 +0200
+| 
+|     Changing BumpPriorityByType to use fanctor
+| 
+|  TaskManager.cpp | 21 +++++++++++++--------
+|  TaskManager.h   |  9 +++++++++
+|  2 files changed, 22 insertions(+), 8 deletions(-)
+| 
+* commit ef3e452831ad6789c5f2700ba6b461c3ffd1b57a
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Tue Jan 6 22:05:31 2026 +0200
+| 
+|     resusing the filter function
+| 
+|  TaskManager.cpp | 11 ++++++-----
+|  1 file changed, 6 insertions(+), 5 deletions(-)
+| 
+* commit 2ad524627421606de18b9b0daa04dc116cf8892d
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Mon Jan 5 17:27:00 2026 +0200
+| 
+|     Adding Destructur to TaskManager
+| 
+|  TaskManager.cpp | 4 ++++
+|  TaskManager.h   | 1 +
+|  2 files changed, 5 insertions(+)
+| 
+* commit 51bdc3c8795b02550d99b07391eae924e17c4cff
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Mon Jan 5 17:04:31 2026 +0200
+| 
+|     Fxining minor bug
+| 
+|  TaskManager.cpp | 7 ++++++-
+|  1 file changed, 6 insertions(+), 1 deletion(-)
+| 
+* commit 593eb5e7bed1dde75e064e4d59061001fe6462d8
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Mon Jan 5 16:30:52 2026 +0200
+| 
+|     Fixing wrong order of SortedList and adding task id count
+| 
+|  .gitmodules        | 6 ++++++
+|  MatamGenericTester | 1 +
+|  SortedList.h       | 2 +-
+|  TaskManager.cpp    | 7 +++++--
+|  TaskManager.h      | 1 +
+|  TechnionMatam      | 1 +
+|  6 files changed, 15 insertions(+), 3 deletions(-)
+| 
+* commit 317167dcd6f395cc29126e69dfdae1ef343ad9c2
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Sat Jan 3 18:41:01 2026 +0200
+| 
+|     fixing minor mistake in remove
+| 
+|  SortedList.h | 2 +-
+|  1 file changed, 1 insertion(+), 1 deletion(-)
+| 
+* commit 152e583fba6b430173677ff135b2a4e041a3d51d
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Sat Jan 3 17:41:15 2026 +0200
+| 
+|     fixing search person
+| 
+|  TaskManager.cpp | 1 +
+|  1 file changed, 1 insertion(+)
+| 
+* commit 2a2acff1689cefa57baac433b78575cf4efe3a1f
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Sat Jan 3 17:39:51 2026 +0200
+| 
+|     Implementing 4.3.2
+| 
+|  TaskManager.cpp | 26 ++++++++++++++++++++++++--
+|  TaskManager.h   |  1 +
+|  2 files changed, 25 insertions(+), 2 deletions(-)
+| 
+* commit c0410bb26ed7863531984713e02470006e9a89f6
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Sat Jan 3 14:56:45 2026 +0200
+| 
+|     Implementing 4.3.1
+| 
+|  TaskManager.cpp | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++++---
+|  TaskManager.h   |  5 +++++
+|  2 files changed, 61 insertions(+), 3 deletions(-)
+| 
+* commit e57417a44daf3ed233d3b2317e4cd1cd94526e66
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Fri Jan 2 19:51:25 2026 +0200
+| 
+|     Fixing minot mistakes in apply again
+| 
+|  SortedList.h    | 5 ++---
+|  TaskManager.cpp | 3 +++
+|  2 files changed, 5 insertions(+), 3 deletions(-)
+| 
+* commit c349856fd9e7e7ebb733cde997bff666b42d3d7d
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Fri Jan 2 19:22:55 2026 +0200
+| 
+|     Fixing minot mistakes in length and apply
+| 
+|  SortedList.h | 5 +++--
+|  1 file changed, 3 insertions(+), 2 deletions(-)
+| 
+* commit 5ca1132dd68892d091673eced892266175d58a1a
+| Author: ezraido247 <ezraido247@gmail.com>
+| Date:   Fri Jan 2 18:56:27 2026 +0200
+| 
+|     Implementing filter and apply
+| 
+|  SortedList.h | 19 ++++++++++++++++++-
+|  1 file changed, 18 insertions(+), 1 deletion(-)
+| 
+* commit 4789f6aafcc176e1f263afe78530da1673d847c2
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Thu Jan 1 10:14:10 2026 +0200
+| 
+|     make Ctors and Dtors public for in the ConstIterator class, restore the main.cpp file
+| 
+|  SortedList.h |  20 +--
+|  main         | Bin 35816 -> 0 bytes
+|  main.cpp     | 528 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+|  3 files changed, 534 insertions(+), 14 deletions(-)
+| 
+* commit 987c05df22a05eb7959b7ee2451ca983b87127e8
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Thu Jan 1 09:57:13 2026 +0200
+| 
+|     add the assignment operator according to the copy and swap idiom
+| 
+|  SortedList.h | 21 +++++++++++++++++++++
+|  1 file changed, 21 insertions(+)
+| 
+* commit 7ff08252c9db730d1d14913b4ef8c4af8f45c942
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Thu Jan 1 09:31:36 2026 +0200
+| 
+|     make the cpy ctor a little faster, since we know the otherList is sorted already we know we must insert to end,
+| 
+|  SortedList.h | 5 +++--
+|  1 file changed, 3 insertions(+), 2 deletions(-)
+| 
+* commit cc61b978b6f96f8b4d52456b6ce68fa3af671944
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Thu Jan 1 09:23:40 2026 +0200
+| 
+|     fix syntax issues, and slight logic issues all around the code
+| 
+|  SortedList.h | 36 ++++++++++++++++++++----------------
+|  1 file changed, 20 insertions(+), 16 deletions(-)
+| 
+* commit 27d2886895237588b809ea1124612e3a2d252aa7
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Thu Jan 1 09:00:39 2026 +0200
+| 
+|     refine insert so that it handles more edge cases (insertion at end, inserttion at begining)
+| 
+|  SortedList.h | 16 ++++++++++++++--
+|  1 file changed, 14 insertions(+), 2 deletions(-)
+| 
+* commit e91cce25919cc454d18f156031d226d68a691392
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 22:25:52 2025 +0200
+| 
+|     fix more syntax issues in the remove method
+| 
+|  SortedList.h |   8 +++++---
+|  main         | Bin 35816 -> 35816 bytes
+|  2 files changed, 5 insertions(+), 3 deletions(-)
+| 
+* commit d6bbcf7ed87c37dba9f062f0fa95094003856589
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 22:22:08 2025 +0200
+| 
+|     fix remove method syntax issues and also now it handles the general case and not jsut the edge cases
+| 
+|  SortedList.h | 9 ++++++---
+|  1 file changed, 6 insertions(+), 3 deletions(-)
+| 
+* commit cf5cbe329cb77d2b9d994abc3028dc13f1e189ec
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 22:16:44 2025 +0200
+| 
+|     fix the for loop in the insert method
+| 
+|  SortedList.h |  26 +--
+|  main         | Bin 0 -> 35816 bytes
+|  main.cpp     | 530 +--------------------------------------------------------
+|  3 files changed, 18 insertions(+), 538 deletions(-)
+| 
+* commit dec2f210779bca650a90f41f736ebe7b1fa67d86
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 21:44:49 2025 +0200
+| 
+|     changed the insert helper method to receive pointers instead of refrence becuase the prev and next nodes might be nullptrs, and thats wanted behaveior
+| 
+|  SortedList.h | 2 +-
+|  1 file changed, 1 insertion(+), 1 deletion(-)
+| 
+* commit 8638078737e2506a0f4b07936b4168c882c09d3f
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 21:43:14 2025 +0200
+| 
+|     add the implementation of the Sorted list cpy ctor
+| 
+|  SortedList.h | 35 +++++++++++++++++------------------
+|  1 file changed, 17 insertions(+), 18 deletions(-)
+| 
+* commit 7a133e64c500d976c87f65f3e20f9e0ab3f3bcbf
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 21:15:58 2025 +0200
+| 
+|     slight reftor, took the insert helper method out of the node struct
+| 
+|  SortedList.h | 55 ++++++++++++++++++++++++++++++-------------------------
+|  1 file changed, 30 insertions(+), 25 deletions(-)
+| 
+* commit be1b6d540a0ea468110d9edfa3f0e41b4201d43f
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 21:06:32 2025 +0200
+| 
+|     allocated the insertedNode on the heap
+| 
+|  SortedList.h | 2 +-
+|  1 file changed, 1 insertion(+), 1 deletion(-)
+| 
+* commit 17b06a5415b6c8c473570578f6d12b1a3a5f480a
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 21:03:51 2025 +0200
+| 
+|     removed unecessary and convoluted operator overloads on Node, theyre not needed and also are an abuse of the freedom CPP gave me (sorry bjarne :( )
+| 
+|  SortedList.h | 12 ------------
+|  1 file changed, 12 deletions(-)
+| 
+* commit 64be9a80c9f1837274a34bf17ec8baa3218a88b9
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 21:01:22 2025 +0200
+| 
+|     add insert, remove and length
+| 
+|  SortedList.h | 74 +++++++++++++++++++++++++++++++++++++++++++---------------
+|  1 file changed, 55 insertions(+), 19 deletions(-)
+| 
+* commit e924f564f5aad35b90bf2d24ebf9b9fa5ec7f0b7
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 20:18:34 2025 +0200
+| 
+|     add the insert method
+| 
+|  SortedList.h | 40 +++++++++++++++++++++++++++++++++++++++-
+|  1 file changed, 39 insertions(+), 1 deletion(-)
+| 
+* commit 3e1dca03e90db119e5dab347ae1b47c68f4501c3
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 19:50:48 2025 +0200
+| 
+|     add end and begin methods
+| 
+|  SortedList.h | 10 ++++++++--
+|  1 file changed, 8 insertions(+), 2 deletions(-)
+| 
+* commit 0222d7f0a082bcb42675834befd2203261448eb1
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 14:10:47 2025 +0200
+| 
+|     make sure user has access only to whatever the TA's said the user should have access to
+| 
+|  SortedList.h | 33 ++++++++++++++++++++++-----------
+|  1 file changed, 22 insertions(+), 11 deletions(-)
+| 
+* commit c826f32729cad48d7cccb017b3298d280ff1c951
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 13:47:10 2025 +0200
+| 
+|     adding a gitignore
+| 
+|  .gitignore | 1 +
+|  1 file changed, 1 insertion(+)
+| 
+* commit 19aea1ff623a5e29e8a9c33aa9f966663d91b08e
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 13:21:25 2025 +0200
+| 
+|     first draft of the ConstIterator operators
+| 
+|  SortedList.h | 46 ++++++++++++++++++++++++++++++++++++++++++++--
+|  1 file changed, 44 insertions(+), 2 deletions(-)
+| 
+* commit 2710a3486bbc89e7d5cb817ec58801b597cff9d0
+| Author: AkramiSalah <ramerame123890@gmail.com>
+| Date:   Wed Dec 31 12:15:56 2025 +0200
+| 
+|     added the template for the private Node struct
+| 
+|  SortedList.h | 10 ++++++++++
+|  1 file changed, 10 insertions(+)
+| 
+* commit c5722ab4f16cac40fa756f333918cd651d0b3fa8
+  Author: EgbariaMohammad <agbariya@campus.technion.ac.il>
+  Date:   Fri Dec 26 15:46:17 2025 +0200
+  
+      Add files via upload
+  
+   Person.cpp           |  51 +++++
+   Person.h             |  79 ++++++++
+   README.md            |   6 +
+   SortedList.h         |  57 ++++++
+   Task.cpp             |  86 ++++++++
+   Task.h               | 115 +++++++++++
+   TaskManager.h        |  75 +++++++
+   main.cpp             | 531 +++++++++++++++++++++++++++++++++++++++++++++++++
+   tests/test1.expected |   3 +
+   tests/test2.expected |   3 +
+   tests/test3.expected |  30 +++
+   tests/test4.expected |   3 +
+   tests/test5.expected |   3 +
+   tests/test6.expected |  15 ++
+   14 files changed, 1057 insertions(+)
